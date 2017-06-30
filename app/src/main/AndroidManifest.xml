@@ -27,5 +27,5 @@
         <activity android:name=".TodoListDbActivity" />
         <activity android:name=".HttpImageActivity"></activity>
     </application>
-
+//
 </manifest>
