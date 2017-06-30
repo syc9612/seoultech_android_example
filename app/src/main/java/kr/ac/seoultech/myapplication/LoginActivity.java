@@ -14,12 +14,13 @@ public class LoginActivity extends AppCompatActivity
 
     private EditText etLoginId;
     private EditText etPassword;
-
+    private EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         etLoginId = (EditText) findViewById(R.id.et_login_id);
         etPassword = (EditText) findViewById(R.id.et_password);

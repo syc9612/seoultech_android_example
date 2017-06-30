@@ -36,4 +36,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="todo list"/>
+
+    <Button
+        android:id="@+id/btn_todo_list_db"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="todo list_db"/>
+
+    <Button
+        android:id="@+id/btn_http_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HTTP 이미지 다운로드"/>
 </LinearLayout>

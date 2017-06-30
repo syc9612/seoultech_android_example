@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_simpleList.setOnClickListener(this);
         Button btn_todo_list = (Button) findViewById(R.id.btn_todo_list);
         btn_todo_list.setOnClickListener(this);
+        Button btn_todo_list_db = (Button) findViewById(R.id.btn_todo_list_db);
+        btn_todo_list_db.setOnClickListener(this);
+        Button btn_http_image = (Button) findViewById(R.id.btn_http_image);
+        btn_http_image.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -87,9 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, TodoListActivity.class));
                 break;
             }
-
-
-
+            case R.id.btn_todo_list_db : {
+                startActivity(new Intent(this, TodoListDbActivity.class));
+                break;
+            }
+            case R.id.btn_http_image : {
+                startActivity(new Intent(this, HttpImageActivity.class));
+                break;
+            }
         }
     }
 }

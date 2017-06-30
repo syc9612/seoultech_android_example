@@ -1,7 +1,9 @@
 package kr.ac.seoultech.myapplication;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,7 +26,10 @@ import kr.ac.seoultech.myapplication.model.Todo;
 
 public class TodoListActivity extends AppCompatActivity
                                 implements View.OnClickListener,
-        AdapterView.OnItemClickListener{
+                                     AdapterView.OnItemClickListener,
+                                     AdapterView.OnItemLongClickListener
+{
+
 
     private final static int REQUEST_CODE_ADD = 1;
     private final static int REQUEST_CODE_DETAIL = 2;
@@ -32,6 +37,7 @@ public class TodoListActivity extends AppCompatActivity
     private ListView listView;
     private TodoAdapter adapter;
     private EditText etTitle;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,7 @@ public class TodoListActivity extends AppCompatActivity
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(this);
+        listView.setOnItemLongClickListener(this);
 
     }
 
@@ -134,6 +141,33 @@ public class TodoListActivity extends AppCompatActivity
 
         startActivityForResult(intent,REQUEST_CODE_DETAIL);
     }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+                                   final int position, long id) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(android.R.drawable.ic_dialog_info);
+        builder.setTitle("안내");
+        builder.setMessage("삭제하시겠습니까?");
+        builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                adapter.removeItem(position);
+            }
+        });
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+
+            }
+        });
+
+        builder.create().show();
+        return true;
+    }
+
 }
 
 
